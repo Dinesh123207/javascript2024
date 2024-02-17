@@ -9,8 +9,22 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+function calculatesum(counter){
+  var sum =0;
+  for(let i=0;i<counter;i++){
+      sum = sum + i;
+  }
+  return sum;
+}
+
+
+
 function handleFirstRequest(req, res){
-    res.send('hello world');
+  var calculatedsum = calculatesum(100);
+  console.log(calculatedsum);
+  var answer = "the sum is"+ calculatedsum;
+
+    res.send(answer);
 
 
 }
@@ -23,12 +37,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-function calculatesum(counter){
-    var sum =0;
-    for(let i=0;i<counter;i++){
-        sum = sum + i;
-    }
-    return sum;
-}
-var calculatedsum = calculatesum(100);
-console.log(calculatedsum);
